@@ -1,0 +1,71 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                //
+            }
+        }
+        stage('Test'){
+            steps {
+                //
+            }
+        }
+        stage('Deploy') {
+            steps {
+                //
+            }
+        }
+
+    }
+}
+
+
+
+
+pipeline {
+    stages {
+        stage("Clone code from VCS") {
+
+        }
+
+        stage("Maven Build") {
+
+        }
+
+        stage("Publish artifact to Nexus Repository")
+    }
+
+}
+
+pipeline {
+    stages {
+        stage("BuildAndTest") {
+            steps {
+                sh 'mvn install'
+            }
+            post {
+                success {
+                    echo 'Now archiving...'
+                    archiveArtifacts artifacts: '**/target/*.war'
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

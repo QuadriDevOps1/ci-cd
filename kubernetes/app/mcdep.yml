@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sscademy-cache01
+  labels:
+    app: sscademy-cache01
+spec:
+  selector:
+    matchLabels:
+      app: sscademy-cache01
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sscademy-cache01
+    spec:
+      containers:
+      - name: sscademy-cache01
+        image: memcached
+        ports:
+        - name: cache-port
+          containerPort: 11211

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sscademymq01
+spec:
+  ports:
+  - port: 5672
+    targetPort: mq01-port
+    protocol: TCP
+  selector:
+    app: sscademymq01
+  type: ClusterIP

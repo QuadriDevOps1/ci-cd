@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sscademy-db
+  labels:
+    app: sscademy-db
+spec:
+  selector:
+    matchLabels:
+      app: sscademy-db
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sscademy-db
+    spec:
+      containers:
+      - name: sscademy-db
+        image: imranvisualpath/8pmdbimg:v1
+        ports:
+        - name: db-port
+          containerPort: 3306
+        env: 
+         - name: MYSQL_ROOT_PASSWORD
+           valueFrom:
+             secretKeyRef:
+               name: app-secret
+               key: db-pass
+
+

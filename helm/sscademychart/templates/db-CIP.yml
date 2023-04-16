@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sscademy-db
+spec:
+  ports:
+  - port: 3306
+    targetPort: db-port
+    protocol: TCP
+  selector:
+    app: sscademy-db
+  type: ClusterIP
